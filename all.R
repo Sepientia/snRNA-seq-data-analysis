@@ -241,15 +241,6 @@ ggsave("marker_umap11.svg",height = 7,width = 7)
 FeatureDimPlot(all.final,reduction = 'umap',features = "cardio11",raster = TRUE)
 ggsave("marker_umap12.svg",height = 7,width = 7)
 
-test_a <- as.data.frame(all.final[["umap"]]@cell.embeddings)
-test_a$celltype <- all.final$cluster
-FeatureDimPlot(all.final,reduction = 'umap',features = "bcell10")+
-  stat_unchull(aes(x="umap_1",y="umap_2"),
-               data=subset(test_a, celltype=="B Cells"),
-               alpha = 0.2, 
-               delta = 0.2,
-               linewidth = 0.5,
-               show.legend = F)
 
 
 
