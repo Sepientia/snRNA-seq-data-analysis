@@ -76,8 +76,8 @@ FeatureDimPlot(all.final,reduction = 'umap',features = "bcell10")
 FeatureDimPlot(all.final,reduction = 'umap',features = "cardio11")
 
 DimPlot(all.final,reduction = 'umap',group.by="RNA_snn_res.0.4")
-cluster1 <- data.frame(all.final$seurat_clusters,all.final@reductions$umap@cell.embeddings,all.final$tcell12,
-                       all.final$bcell14,all.final$cardiomyocytes7,all.final$endothelial13)
+cluster1 <- data.frame(all.final$seurat_clusters,all.final@reductions$umap@cell.embeddings,all.final$tcell9,
+                       all.final$bcell10,all.final$cardio11,all.final$endothelial2)
 cluster1 <- cluster1 %>% mutate(cluster=0)
 cluster1[which(cluster1$all.final.seurat_clusters%in%c(6,9,13)),8] <- "Cardiomyocytes"
 cluster1[which(cluster1$all.final.seurat_clusters%in%c(22)),8] <-"Adipocytes"
@@ -143,7 +143,7 @@ my.colors <- colorRampPalette(c( "grey", "red"))(100)
 FeaturePlot(all.final,reduction = "umap",features = "Grk3",raster = TRUE,cols = my.colors)
 FeaturePlot(all.final,reduction = "umap",features = "Grk3",split.by = "group",raster = TRUE,cols = my.colors)
 
-names_geneset <- c("fibroblasts"  ,               "endothelial1"    ,    "macrophages"     ,    "pericytes"  ,         "adipocytes" ,        
+names_geneset <- c("fibroblasts"  ,               "endothelial"    ,    "macrophages"     ,    "pericytes"  ,         "adipocytes" ,        
                    "cardio" ,     "smooth muscle cells"    ,     "epicardial" ,        "schwan"        ,      "tcell","bcell" )
 result_data <- data.frame()
 for(func_name in names_geneset) {
@@ -215,7 +215,7 @@ ggsave("marker.svg",height = 5,width = 10)
 
 
 
-FeatureDimPlot(all.final,reduction = 'umap',features = "fibroblasts1",raster = TRUE,raster.dpi = )
+FeatureDimPlot(all.final,reduction = 'umap',features = "fibroblasts1",raster = TRUE )
 ggsave("marker_umap1.svg",height = 7,width = 7)
 FeatureDimPlot(all.final,reduction = 'umap',features = "endothelial2",raster = TRUE)
 ggsave("marker_umap2.svg",height = 7,width = 7)
@@ -225,8 +225,7 @@ FeatureDimPlot(all.final,reduction = 'umap',features = "pericytes4",raster = TRU
 ggsave("marker_umap4.svg",height = 7,width = 7)
 FeatureDimPlot(all.final,reduction = 'umap',features = "adipocytes5")
 ggsave("marker_umap5.svg",height = 7,width = 7)
-FeatureDimPlot(all.final,reduction = 'umap',features = "cardiomyocytes7",raster = TRUE)
-ggsave("marker_umap6.svg",height = 7,width = 7)
+
 FeatureDimPlot(all.final,reduction = 'umap',features = "smooth muscle cells6",raster = TRUE)
 ggsave("marker_umap7.svg",height = 7,width = 7)
 FeatureDimPlot(all.final,reduction = 'umap',features = "epicardial7",raster = TRUE)
